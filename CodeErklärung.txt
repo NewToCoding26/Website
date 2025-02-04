@@ -1,0 +1,340 @@
+<!DOCTYPE html> <!-- Deklariert das Dokument als HTML5 -->
+<html lang="en"> <!-- Definiert die Sprache der Webseite auf Englisch -->
+<head> <!-- Beginn des Head-Teils, enthält Metadaten -->
+    <meta charset="UTF-8"> <!-- Setzt den Zeichensatz auf UTF-8 für Unicode-Unterstützung -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Stellt sicher, dass die Seite responsiv ist und sich an das Gerät anpasst -->
+    <title>Website</title> <!-- Setzt den Titel der Webseite, der im Browser-Tab angezeigt wird -->
+    <link rel="stylesheet" href="style.css"> <!-- Verlinkt die externe CSS-Datei "style.css" zur Styling der Webseite -->
+</head>
+<body> <!-- Beginn des Body-Teils, enthält sichtbaren Inhalt -->
+    <header> <!-- Beginn des Header-Elements, das normalerweise Navigationsleisten oder Logos enthält -->
+        <h2 class="logo">Logo</h2> <!-- Ein H2-Element mit der Klasse "logo", das als Logo dient -->
+        <nav class="navigation"> <!-- Ein Nav-Element mit der Klasse "navigation" für die Navigationsleiste -->
+            <a href="#">Home</a> <!-- Ein Anchor-Tag (Link) mit dem Text "Home" -->
+            <a href="#">About</a> <!-- Ein weiterer Link mit dem Text "About" -->
+            <a href="#">Service</a> <!-- Ein Link mit dem Text "Service" -->
+            <a href="#">Contact</a> <!-- Ein Link mit dem Text "Contact" -->
+            <button class="btnLogin-popup">Login</button> <!-- Ein Button mit der Klasse "btnLogin-popup" zum Öffnen des Login-Popups -->
+        </nav>
+    </header>
+    <div class="wrapper"> <!-- Ein Div-Container mit der Klasse "wrapper" für die Login/Register-Formulare -->
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span> <!-- Ein Span-Element mit einem Icon (Schließen) -->
+        <div class="form-box login"> <!-- Ein Div-Container für das Login-Formular -->
+            <h2>Login</h2> <!-- Überschrift des Formulars -->
+            <form action="#"> <!-- Beginn des Formulars -->
+                <div class="input-box"> <!-- Container für ein Eingabefeld -->
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span> <!-- Icon für das E-Mail-Feld -->
+                    <input type="email" required> <!-- Input-Feld für E-Mail-Adresse, Required bedeutet, dass es ausgefüllt werden muss -->
+                    <label>Email</label> <!-- Label für das E-Mail-Feld -->
+                </div>
+                <div class="input-box"> <!-- Container für das Passwortfeld -->
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span> <!-- Icon für das Passwortfeld -->
+                    <input type="password" required> <!-- Input-Feld für das Passwort -->
+                    <label>Password</label> <!-- Label für das Passwortfeld -->
+                </div>
+                <div class="remember-forgot"> <!-- Container für Checkbox und Forgot-Password-Link -->
+                    <label><input type="checkbox">Remember me</label> <!-- Checkbox mit dem Text "Remember me" -->
+                    <a href="#">Forgot Password?</a> <!-- Link für vergessenes Passwort -->
+                </div>
+                <button type="submit" class="btn">Login</button> <!-- Submit-Button für das Formular -->
+                <div class="login-register"> <!-- Container für den Register-Link -->
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p> <!-- Text und Link zur Registrierung -->
+                </div>
+            </form>
+        </div>
+        <div class="form-box register"> <!-- Ein Div-Container für das Register-Formular -->
+            <!-- Struktur analog zum Login-Formular -->
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- Verlinkt die externe JavaScript-Datei "script.js" -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <!-- Importiert Ion-Icons für moderne Icons -->
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> <!-- Fallback für ältere Browser ohne Module-Unterstützung -->
+</body>
+</html>
+
+JS:
+
+const wrapper = document.querySelector('.wrapper'); /* Wählt das erste Element mit der Klasse "wrapper" aus */
+const loginLink = document.querySelector('.login-link'); /* Wählt das erste Element mit der Klasse "login-link" aus */
+const registerLink = document.querySelector('.register-link'); /* Wählt das erste Element mit der Klasse "register-link" aus */
+const btnPopup = document.querySelector('.btnLogin-popup'); /* Wählt das erste Element mit der Klasse "btnLogin-popup" aus */
+const iconClose = document.querySelector('.icon-close'); /* Wählt das erste Element mit der Klasse "icon-close" aus */
+
+registerLink.addEventListener('click', () => { /* Fügt ein Click-Event zum Register-Link hinzu */
+    wrapper.classList.add('active'); /* Fügt der Klasse "wrapper" die Klasse "active" hinzu */
+});
+
+loginLink.addEventListener('click', () => { /* Fügt ein Click-Event zum Login-Link hinzu */
+    wrapper.classList.remove('active'); /* Entfernt die Klasse "active" von der Klasse "wrapper" */
+});
+
+btnPopup.addEventListener('click', () => { /* Fügt ein Click-Event zum Login-Button hinzu */
+    wrapper.classList.add('active-popup'); /* Fügt der Klasse "wrapper" die Klasse "active-popup" hinzu */
+});
+
+iconClose.addEventListener('click', () => { /* Fügt ein Click-Event zum Schließe-Icon hinzu */
+    wrapper.classList.remove('active-popup'); /* Entfernt die Klasse "active-popup" von der Klasse "wrapper" */
+});
+
+CSS:
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
+/* Importiert externe Schriftarten (Poppins und Roboto) von Google Fonts. Diese werden auf der Webseite verwendet. */
+
+* {
+    margin: 0; /* Setzt den äußeren Abstand (margin) aller Elemente auf 0. */
+    padding: 0; /* Setzt den inneren Abstand (padding) aller Elemente auf 0. */
+    box-sizing: border-box; /* Stellt sicher, dass die Breite/Höhe eines Elements inklusive Padding und Border berechnet wird. */
+    font-family: 'Poppins', sans-serif; /* Setzt die Standardschriftart auf Poppins mit einer fallback-Schriftart (sans-serif). */
+}
+
+body {
+    display: flex; /* Aktiviert Flexbox-Layout für das gesamte Dokument. */
+    justify-content: center; /* Zentriert den Inhalt horizontal im Container. */
+    align-items: center; /* Zentriert den Inhalt vertikal im Container. */
+    min-height: 100vh; /* Setzt die minimale Höhe des Body auf die volle Höhe des Viewports. */
+    background: url('background.jpg') no-repeat; /* Setzt ein Hintergrundbild, das nicht wiederholt wird. */
+    background-size: cover; /* Skaliert das Hintergrundbild, sodass es den gesamten Container bedeckt. */
+    background-position: center; /* Zentriert das Hintergrundbild im Container. */
+    background-repeat: no-repeat; /* Verhindert, dass das Hintergrundbild wiederholt wird. */
+}
+
+header {
+    position: fixed; /* Positioniert das Header-Element relativ zum Browser-Fenster. Es bleibt beim Scrollen an seinem Platz. */
+    top: 0; /* Setzt die obere Kante des Headers an den obersten Rand des Viewports. */
+    left: 0; /* Setzt die linke Kante des Headers an den linken Rand des Viewports. */
+    width: 100%; /* Setzt die Breite des Headers auf 100% der Bildschirmbreite. */
+    padding: 20px 100px; /* Fügt oben/unten 20px und links/rechts 100px Padding hinzu. */
+    display: flex; /* Aktiviert Flexbox-Layout für den Header. */
+    justify-content: space-between; /* Verteilt die Inhalte des Headers gleichmäßig mit maximalen Abständen zwischen ihnen. */
+    align-items: center; /* Zentriert die Inhalte des Headers vertikal. */
+    z-index: 99; /* Stellt sicher, dass der Header über anderen Elementen liegt. */
+}
+
+.logo {
+    font-size: 2em; /* Setzt die Schriftgröße des Logos auf das Doppelte der Standardgröße. */
+    color: #fff; /* Setzt die Schriftfarbe des Logos auf Weiß. */
+    user-select: none; /* Verhindert, dass der Benutzer den Text des Logos auswählt. */
+}
+
+.navigation a {
+    position: relative; /* Positioniert die Links relativ zu ihrem normalen Platz im Dokument. */
+    font-size: 1.1em; /* Setzt die Schriftgröße der Links auf 1.1 mal die Standardgröße. */
+    color: #fff; /* Setzt die Schriftfarbe der Links auf Weiß. */
+    text-decoration: none; /* Entfernt Unterstreichungen bei den Links. */
+    font-weight: 500; /* Setzt die Schriftstärke der Links auf 500. */
+    margin-left: 40px; /* Fügt 40px Abstand links zu den Links hinzu. */
+}
+
+.navigation a::after {
+    content: ''; /* Definiert den Inhalt des Pseudo-Elements ::after. */
+    position: absolute; /* Positioniert das Pseudo-Element absolut innerhalb seines Parents. */
+    left: 0; /* Setzt die linke Kante des Pseudo-Elements an den linken Rand des Elternelements. */
+    bottom: -6px; /* Setzt die untere Kante des Pseudo-Elements 6px unterhalb des Elternelements. */
+    transform: scaleX(0); /* Skaliert das Pseudo-Element horizontal auf 0 (unsichtbar). */
+    width: 100%; /* Setzt die Breite des Pseudo-Elements auf 100%. */
+    height: 3px; /* Setzt die Höhe des Pseudo-Elements auf 3px. */
+    background: #fff; /* Setzt die Hintergrundfarbe des Pseudo-Elements auf Weiß. */
+    border-radius: 5px; /* Rundet die Ecken des Pseudo-Elements. */
+    transition: transform 0.5s; /* Definiert eine Transition für die Transform-Eigenschaft über 0.5 Sekunden. */
+    transform-origin: right; /* Setzt den Ursprungspunkt der Transformation auf die rechte Seite. */
+}
+
+.navigation a:hover::after {
+    transform-origin: left; /* Setzt den Ursprungspunkt der Transformation auf die linke Seite beim Hover. */
+    transform: scaleX(1); /* Skaliert das Pseudo-Element horizontal auf 1 (sichtbar) beim Hover. */
+}
+
+.navigation .btnLogin-popup {
+    width: 130px; /* Setzt die Breite des Login-Buttons auf 130px. */
+    height: 50px; /* Setzt die Höhe des Login-Buttons auf 50px. */
+    background: transparent; /* Setzt den Hintergrund des Buttons auf durchsichtig. */
+    border: 2px solid #fff; /* Fügt einen weißen Rahmen mit 2px Breite hinzu. */
+    outline: none; /* Entfernt den Fokus-Rahmen des Buttons. */
+    border-radius: 6px; /* Rundet die Ecken des Buttons. */
+    cursor: pointer; /* Ändert den Mauszeiger in einen Pointer, wenn der Benutzer über dem Button ist. */
+    font-size: 1.1em; /* Setzt die Schriftgröße des Buttons auf 1.1 mal die Standardgröße. */
+    color: #fff; /* Setzt die Schriftfarbe des Buttons auf Weiß. */
+    font-weight: 500; /* Setzt die Schriftstärke des Buttons auf 500. */
+    margin-left: 40px; /* Fügt 40px Abstand links zum Button hinzu. */
+    transition: 0.5s; /* Definiert eine Transition für alle Eigenschaften über 0.5 Sekunden. */
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff; /* Ändert den Hintergrund des Buttons auf Weiß beim Hover. */
+    color: #162938; /* Ändert die Schriftfarbe des Buttons auf Dunkelblau (#162938) beim Hover. */
+}
+
+.wrapper {
+    position: relative; /* Positioniert den Wrapper relativ zu seinem normalen Platz im Dokument. */
+    width: 400px; /* Setzt die Breite des Wrappers auf 400px. */
+    height: 440px; /* Setzt die Höhe des Wrappers auf 440px. */
+    background: transparent; /* Setzt den Hintergrund des Wrappers auf durchsichtig. */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Fügt einen weißen Rahmen mit 50% Transparenz hinzu. */
+    border-radius: 20px; /* Rundet die Ecken des Wrappers. */
+    backdrop-filter: blur(20px); /* Fügt einen Hintergrund-Weichzeichner mit 20px Radius hinzu. */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Fügt einen Schatten mit 50% Transparenz hinzu. */
+    display: flex; /* Aktiviert Flexbox-Layout für den Wrapper. */
+    justify-content: center; /* Zentriert den Inhalt horizontal im Wrapper. */
+    align-items: center; /* Zentriert den Inhalt vertikal im Wrapper. */
+    overflow: hidden; /* Versteckt Inhalte, die außerhalb des Containers liegen. */
+    transform: scale(0); /* Skaliert den Wrapper auf 0 (unsichtbar). */
+    transition: transform 0.5s ease, height 0.2s ease; /* Definiert eine Transition für die Transform- und Height-Eigenschaften. */
+}
+
+.wrapper.active-popup {
+    transform: scale(1); /* Skaliert den Wrapper auf 1 (sichtbar), wenn die Klasse "active-popup" aktiv ist. */
+}
+
+.wrapper.active {
+    height: 520px; /* Setzt die Höhe des Wrappers auf 520px, wenn die Klasse "active" aktiv ist. */
+}
+
+.wrapper .form-box {
+    width: 100%; /* Setzt die Breite des Formular-Containers auf 100%. */
+    padding: 40px; /* Fügt 40px Padding um das Formular hinzu. */
+}
+
+.wrapper .form-box.login {
+    transition: transform 0.18s ease; /* Definiert eine Transition für die Transform-Eigenschaft über 0.18 Sekunden. */
+    transform: translateX(0); /* Setzt die horizontale Position des Login-Formulars auf 0. */
+}
+
+.wrapper.active .form-box.login {
+    transition: none; /* Deaktiviert die Transition, wenn die Klasse "active" aktiv ist. */
+    transform: translateX(-400px); /* Verschiebt das Login-Formular 400px nach links, wenn die Klasse "active" aktiv ist. */
+}
+
+.wrapper .form-box.register {
+    position: absolute; /* Positioniert das Register-Formular absolut innerhalb des Wrappers. */
+    transition: none; /* Deaktiviert die Transition für das Register-Formular. */
+    transform: translateX(400px); /* Verschiebt das Register-Formular 400px nach rechts. */
+}
+
+.wrapper.active .form-box.register {
+    transition: transform 0.18s ease; /* Definiert eine Transition für die Transform-Eigenschaft über 0.18 Sekunden. */
+    transform: translateX(0); /* Setzt die horizontale Position des Register-Formulars auf 0, wenn die Klasse "active" aktiv ist. */
+}
+
+.wrapper .icon-close {
+    position: absolute; /* Positioniert das Schließe-Icon absolut innerhalb des Wrappers. */
+    top: 0; /* Setzt die obere Kante des Icons an den obersten Rand des Wrappers. */
+    right: 0; /* Setzt die rechte Kante des Icons an den rechten Rand des Wrappers. */
+    width: 45px; /* Setzt die Breite des Icons auf 45px. */
+    height: 45px; /* Setzt die Höhe des Icons auf 45px. */
+    background: #162938; /* Setzt den Hintergrund des Icons auf Dunkelblau (#162938). */
+    font-size: 2em; /* Setzt die Schriftgröße des Icons auf das Doppelte der Standardgröße. */
+    color: #fff; /* Setzt die Schriftfarbe des Icons auf Weiß. */
+    display: flex; /* Aktiviert Flexbox-Layout für das Icon. */
+    justify-content: center; /* Zentriert den Inhalt horizontal im Icon. */
+    align-items: center; /* Zentriert den Inhalt vertikal im Icon. */
+    border-bottom-left-radius: 20px; /* Rundet die untere linke Ecke des Icons. */
+    cursor: pointer; /* Ändert den Mauszeiger in einen Pointer, wenn der Benutzer über dem Icon ist. */
+    z-index: 1; /* Stellt sicher, dass das Icon über anderen Elementen liegt. */
+}
+
+.form-box h2 {
+    font-size: 2em; /* Setzt die Schriftgröße der Überschrift auf das Doppelte der Standardgröße. */
+    color: #162938; /* Setzt die Schriftfarbe der Überschrift auf Dunkelblau (#162938). */
+    text-align: center; /* Zentriert den Text der Überschrift horizontal. */
+}
+
+.input-box {
+    position: relative; /* Positioniert das Input-Container relativ zu seinem normalen Platz im Dokument. */
+    width: 100%; /* Setzt die Breite des Input-Containers auf 100%. */
+    height: 50px; /* Setzt die Höhe des Input-Containers auf 50px. */
+    border-bottom: 2px solid #162938; /* Fügt einen blauen Rahmen unten hinzu. */
+    margin: 30px 0; /* Fügt oben/unten 30px Margins hinzu. */
+}
+
+.input-box label {
+    position: absolute; /* Positioniert das Label absolut innerhalb des Input-Containers. */
+    top: 120%; /* Setzt die obere Kante des Labels 120% unterhalb des Input-Containers. */
+    left: 5px; /* Setzt die linke Kante des Labels 5px vom linken Rand des Input-Containers entfernt. */
+    transform: translateY(-50px); /* Verschiebt das Label 50px nach oben. */
+    font-size: 1em; /* Setzt die Schriftgröße des Labels auf die Standardgröße. */
+    color: #162938; /* Setzt die Schriftfarbe des Labels auf Dunkelblau (#162938). */
+    font-weight: 500; /* Setzt die Schriftstärke des Labels auf 500. */
+    pointer-events: none; /* Verhindert, dass das Label auf Klicks oder andere Interaktionen reagiert. */
+    transition: 0.5s; /* Definiert eine Transition für alle Eigenschaften über 0.5 Sekunden. */
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px; /* Verschiebt das Label 5px über das Input-Feld, wenn der Benutzer fokussiert oder gültigen Text eingibt. */
+}
+
+.input-box input {
+    width: 100%; /* Setzt die Breite des Input-Feldes auf 100%. */
+    height: 100%; /* Setzt die Höhe des Input-Feldes auf 100%. */
+    background: transparent; /* Setzt den Hintergrund des Input-Feldes auf durchsichtig. */
+    border: none; /* Entfernt den Rahmen des Input-Feldes. */
+    outline: none; /* Entfernt den Fokus-Rahmen des Input-Feldes. */
+    font-size: 1em; /* Setzt die Schriftgröße des Input-Feldes auf die Standardgröße. */
+    color: #162938; /* Setzt die Schriftfarbe des Input-Feldes auf Dunkelblau (#162938). */
+    font-weight: 600; /* Setzt die Schriftstärke des Input-Feldes auf 600. */
+    padding: 0 35px 0 5px; /* Fügt Padding links/rechts zum Input-Feld hinzu. */
+}
+
+.input-box .icon {
+    position: absolute; /* Positioniert das Icon absolut innerhalb des Input-Containers. */
+    right: 8px; /* Setzt die rechte Kante des Icons 8px vom rechten Rand des Input-Containers entfernt. */
+    font-size: 1.2em; /* Setzt die Schriftgröße des Icons auf 1.2 mal die Standardgröße. */
+    color: #162938; /* Setzt die Schriftfarbe des Icons auf Dunkelblau (#162938). */
+    line-height: 57px; /* Setzt die Zeilenhöhe des Icons auf 57px. */
+}
+
+.remember-forgot {
+    font-size: 0.9em; /* Setzt die Schriftgröße des Remember-Forgot-Bereichs auf 0.9 mal die Standardgröße. */
+    color: #162938; /* Setzt die Schriftfarbe des Remember-Forgot-Bereichs auf Dunkelblau (#162938). */
+    font-weight: 500; /* Setzt die Schriftstärke des Remember-Forgot-Bereichs auf 500. */
+    margin: -15px 0 15px; /* Fügt oben/unten Margins zum Remember-Forgot-Bereich hinzu. */
+    display: flex; /* Aktiviert Flexbox-Layout für den Remember-Forgot-Bereich. */
+    justify-content: space-between; /* Verteilt die Inhalte des Remember-Forgot-Bereichs gleichmäßig mit maximalen Abständen zwischen ihnen. */
+}
+
+.remember-forgot label input {
+    accent-color: #162938; /* Setzt die Farbe des Akzents (Checkbox) auf Dunkelblau (#162938). */
+    margin-right: 3px; /* Fügt 3px Abstand rechts zur Checkbox hinzu. */
+}
+
+.remember-forgot a {
+    color: #162938; /* Setzt die Schriftfarbe des Links auf Dunkelblau (#162938). */
+    text-decoration: none; /* Entfernt Unterstreichungen bei den Links. */
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline; /* Fügt eine Unterstreichung hinzu, wenn der Benutzer über dem Link ist. */
+}
+
+.btn {
+    width: 100%; /* Setzt die Breite des Buttons auf 100%. */
+    height: 45px; /* Setzt die Höhe des Buttons auf 45px. */
+    background: #162938; /* Setzt den Hintergrund des Buttons auf Dunkelblau (#162938). */
+    border: none; /* Entfernt den Rahmen des Buttons. */
+    outline: none; /* Entfernt den Fokus-Rahmen des Buttons. */
+    border-radius: 6px; /* Rundet die Ecken des Buttons. */
+    cursor: pointer; /* Ändert den Mauszeiger in einen Pointer, wenn der Benutzer über dem Button ist. */
+    font-size: 1em; /* Setzt die Schriftgröße des Buttons auf die Standardgröße. */
+    color: #fff; /* Setzt die Schriftfarbe des Buttons auf Weiß. */
+    font-weight: 500; /* Setzt die Schriftstärke des Buttons auf 500. */
+}
+
+.login-register {
+    font-size: 0.9em; /* Setzt die Schriftgröße des Login/Register-Bereichs auf 0.9 mal die Standardgröße. */
+    color: #162938; /* Setzt die Schriftfarbe des Login/Register-Bereichs auf Dunkelblau (#162938). */
+    text-align: center; /* Zentriert den Text des Login/Register-Bereichs horizontal. */
+    font-weight: 500; /* Setzt die Schriftstärke des Login/Register-Bereichs auf 500. */
+    margin: 25px 0 10px; /* Fügt oben/unten Margins zum Login/Register-Bereich hinzu. */
+}
+
+.login-register p a {
+    color: #162938; /* Setzt die Schriftfarbe des Links auf Dunkelblau (#162938). */
+    text-decoration: none; /* Entfernt Unterstreichungen bei den Links. */
+    font-weight: 600; /* Setzt die Schriftstärke des Links auf 600. */
+}
+
+.login-register p a:hover {
+    text-decoration: underline; /* Fügt eine Unterstreichung hinzu, wenn der Benutzer über dem Link ist. */
+}
+
